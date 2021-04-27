@@ -11,6 +11,8 @@ class Sorter {
   private:
   std::vector<int> _numbers;
 
+  void _save_numbers_to_file(std::string output_filename);
+  void _swap(int *left, int *right);
   void _die(const std::string& err_msg);
 };
 
