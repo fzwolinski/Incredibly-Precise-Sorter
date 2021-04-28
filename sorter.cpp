@@ -17,6 +17,7 @@ void Sorter::read_numbers_from_file(std::string filename) {
 
   while (nums_file >> curr_num) {
     // Add numbers from file to an array
+    //std::cout << curr_num << ", ";
     _numbers.push_back(curr_num);
   }
 
@@ -38,9 +39,9 @@ void Sorter::run_bubble_sort(std::string output_filename) {
   const int numbers_count = _numbers.size();
   bool swapped = false;
 
-  for (int i = 0; i < numbers_count; i++) {
+  for (int i = 0; i < numbers_count - 1; i++) {
     swapped = false;
-    for (int j = 0; j < numbers_count; j++) {
+    for (int j = 0; j < numbers_count - i - 1; j++) {
       if (_numbers[j] > _numbers[j+1]) {
         // Swap places
         _swap(&_numbers[j], &_numbers[j+1]);
@@ -52,7 +53,6 @@ void Sorter::run_bubble_sort(std::string output_filename) {
         break;
     }
   }
-
   _save_numbers_to_file(output_filename);
 }
 
@@ -64,7 +64,10 @@ void Sorter::_save_numbers_to_file(std::string output_filename) {
   */
   std::ofstream output_file (output_filename);
   for (int i = 0; i < _numbers.size(); i++) {
-    output_file << _numbers[i] << ", ";
+    output_file << _numbers[i];
+    if (i != _numbers.size() - 1) {
+      output_file << ", ";
+    }
   }
   output_file.close();
 }
