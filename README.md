@@ -52,7 +52,7 @@ First create sequence of _n_ random numbers
 foo@bar:~$ python create_file_with_nums.py
 ```
 
-<br />
+Then edit main.cpp
 
 ```cpp
 #include <iostream>
