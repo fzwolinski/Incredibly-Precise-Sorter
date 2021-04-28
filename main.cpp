@@ -1,13 +1,12 @@
 #include <iostream>
-#include <chrono>
 #include "sorter.h"
 
 int main() {
-  
   Sorter s;
-  s.read_numbers_from_file("nums.txt");
+  s.load_numbers("nums.txt");
 
   s.run_bubble_sort();
+  s.run_insertion_sort();
 
   return 0;
 }

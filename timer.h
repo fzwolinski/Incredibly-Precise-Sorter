@@ -7,7 +7,7 @@ public:
   ~Timer();
 
 private:
-  std::chrono::time_point<std::chrono::high_resolution_clock> startTimepoint;
-  std::string algorythm;
-  void stop_timer();
+  std::chrono::time_point<std::chrono::high_resolution_clock> _startTimepoint;
+  std::string _algorythm;
+  void _stop_timer();
 };

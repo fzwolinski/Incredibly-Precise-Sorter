@@ -4,11 +4,13 @@
 
 class Sorter {
   public:
-  void read_numbers_from_file(std::string filename);
+  void load_numbers(std::string filename);
   void run_bubble_sort(std::string output_filename = "sorted_bubble_sort.txt");
+  void run_insertion_sort(std::string output_filename = "sorted_insertion_sort.txt");
 
   private:
-  std::vector<int> _numbers;
+  std::vector<int> _unsorted;
+  std::vector<int> _sorted;
 
   void _save_numbers_to_file(std::string output_filename);
   void _swap(int *left, int *right);
