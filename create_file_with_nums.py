@@ -1,4 +1,8 @@
-with open("nums.txt", "a") as f:
-  for i in range(9999, 0, -1):
-    print(f"{i}\n");
+import random
+
+NUMBER_OF_RANDOM_NUMBERS = 1000
+
+with open("nums.txt", "w") as f:
+  for i in random.sample(range(1, NUMBER_OF_RANDOM_NUMBERS+1), NUMBER_OF_RANDOM_NUMBERS):
     f.write(f"{i}\n")
+  print("Done")

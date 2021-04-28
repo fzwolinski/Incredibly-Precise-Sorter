@@ -46,6 +46,14 @@ foo@bar:~$ ./a.out
 
 ## ⌨️ Example usage
 
+First create sequence of _n_ random numbers
+
+```sh
+foo@bar:~$ python create_file_with_nums.py
+```
+
+<br />
+
 ```cpp
 #include <iostream>
 #include "sorter.h"
