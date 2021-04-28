@@ -1,5 +1,4 @@
-#ifndef SORTER_H
-#define SORTER_H
+#pragma once
 
 #include <vector>
 
@@ -15,5 +14,3 @@ class Sorter {
   void _swap(int *left, int *right);
   void _die(const std::string& err_msg);
 };
-
-#endif
