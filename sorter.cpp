@@ -2,6 +2,7 @@
 #include <iostream>
 
 #include "sorter.h"
+#include "timer.h"
 
 void Sorter::read_numbers_from_file(std::string filename) {
   /* 
@@ -9,9 +10,6 @@ void Sorter::read_numbers_from_file(std::string filename) {
    * 
    * :param filename: filename to read numbers from
   */
-
-  std::cout << "Reading file...\n";
-
   std::ifstream nums_file (filename);
   int curr_num;
 
@@ -31,28 +29,34 @@ void Sorter::run_bubble_sort(std::string output_filename) {
    * :param output_filename: file name with sorted numbers
   */
 
-  // Check if numbers were loaded from file
-  if (_numbers.empty() == true) {
-    _die("Error: No numbers loaded.");
-  }
+  {
+    // Start timer
+    Timer t("Bubble Sort");
+    
+    // Check if numbers were loaded from file
+    if (_numbers.empty() == true) {
+      _die("Error: No numbers loaded.");
+    }
 
-  const int numbers_count = _numbers.size();
-  bool swapped = false;
+    const int numbers_count = _numbers.size();
+    bool swapped = false;
 
-  for (int i = 0; i < numbers_count - 1; i++) {
-    swapped = false;
-    for (int j = 0; j < numbers_count - i - 1; j++) {
-      if (_numbers[j] > _numbers[j+1]) {
-        // Swap places
-        _swap(&_numbers[j], &_numbers[j+1]);
-        swapped = true;
+    for (int i = 0; i < numbers_count - 1; i++) {
+      swapped = false;
+      for (int j = 0; j < numbers_count - i - 1; j++) {
+        if (_numbers[j] > _numbers[j+1]) {
+          // Swap places
+          _swap(&_numbers[j], &_numbers[j+1]);
+          swapped = true;
+        }
+      }
+      if (swapped == false) {
+          // Array sorted
+          break;
       }
     }
-    if (swapped == false) {
-        // Array sorted
-        break;
-    }
   }
+  
   _save_numbers_to_file(output_filename);
 }
 
