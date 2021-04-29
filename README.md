@@ -39,9 +39,9 @@ foo@bar:~$ ./a.out
 ## 🚪 Example output
 
 ```sh
-   [Bubble Sort]  Took:  83672661 µs   (83672.661000 ms) to sort 100000 numbers
-[Insertion Sort]  Took:  24628024 µs   (24628.024000 ms) to sort 100000 numbers
-      [STD Sort]  Took:     32000 µs      (32.000000 ms) to sort 100000 numbers
+   [Bubble Sort]  Took:  80288874 µs   (80288.874 ms) (80s) to sort 100000 numbers
+[Insertion Sort]  Took:  24541017 µs   (24541.017 ms) (24s) to sort 100000 numbers
+      [STD Sort]  Took:     33998 µs      (33.998 ms)  (0s) to sort 100000 numbers
 ```
 
 <br />
