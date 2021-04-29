@@ -2,9 +2,10 @@
 #include <string>
 #include "timer.h"
 
-Timer::Timer(std::string sorting_alg) {
+Timer::Timer(std::string sorting_alg, int num_quantity) {
   _startTimepoint = std::chrono::high_resolution_clock::now();
   _algorythm = sorting_alg;
+  _quantity = num_quantity;
 }
 
 void Timer::_stop_timer() {
@@ -15,22 +16,25 @@ void Timer::_stop_timer() {
     auto duration = end - start;
     double miliseconds = duration * 0.001;
     
-    std::string in_miliseconds = " (" + std::to_string(miliseconds) + " milliseconds)\n";
+    std::string in_miliseconds = " (" + std::to_string(miliseconds) + " ms)";
 
     std::cout.width(16);
     std::cout << "[" + _algorythm + "]";
 
-    std::cout.width(11);
-    std::cout << " Duration:";
+    std::cout.width(7);
+    std::cout << " Took:";
 
     std::cout.width(10);
     std::cout << duration;
 
-    std::cout.width(13);
-    std::cout << " microseconds";
+    std::cout.width(2);
+    std::cout << " \xE6s";
 
-    std::cout.width(25);
+    std::cout.width(15);
     std::cout << in_miliseconds;
+
+    std::cout.width(20);
+    std::cout << " to sort " + std::to_string(_quantity) + " numbers\n";
 }
 
 Timer::~Timer() {

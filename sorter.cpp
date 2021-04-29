@@ -41,8 +41,7 @@ void Sorter::run_bubble_sort(std::string output_filename) {
 
   {
     // Start timer
-    Timer t("Bubble Sort");
-    
+    Timer t("Bubble Sort", numbers_count);
   
     bool swapped = false;
 
@@ -95,7 +94,7 @@ void Sorter::run_insertion_sort(std::string output_filename) {
 
   {
     // Start timer
-    Timer t("Insertion Sort");
+    Timer t("Insertion Sort", numbers_count);
     for (int i = 1; i < numbers_count; i++) {
       int curr = _sorted[i];
 

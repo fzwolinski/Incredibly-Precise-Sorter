@@ -38,8 +38,8 @@ foo@bar:~$ ./a.out
 ## 🚪 Example output
 
 ```sh
-   [Bubble Sort]  Duration:    863583 microseconds (863.583000 milliseconds)
-[Insertion Sort]  Duration:    469014 microseconds (469.014000 milliseconds)
+   [Bubble Sort]  Took:    817091 µs (817.091000 ms) to sort 10000 numbers
+[Insertion Sort]  Took:    276006 µs (276.006000 ms) to sort 10000 numbers
 ```
 
 <br />
