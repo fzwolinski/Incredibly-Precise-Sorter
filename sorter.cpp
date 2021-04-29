@@ -65,18 +65,6 @@ void Sorter::run_bubble_sort(std::string output_filename) {
   _save_numbers_to_file(output_filename);
 }
 
-void Sorter::_swap(int *left, int *right) {
-  /* 
-   * Swaps two number in an array
-   * 
-   * :param *left: pointer to first number location
-   * :param *right: pointer to second number location
-  */
-  int temp = *left;
-  *left = *right;
-  *right = temp;
-}
-
 void Sorter::run_insertion_sort(std::string output_filename) {
   /* 
    * Sorts an array with Insertion Sort algorithm
@@ -136,6 +124,57 @@ void Sorter::run_std_sort(std::string output_filename) {
   }
 
   _save_numbers_to_file(output_filename);
+}
+
+void Sorter::run_selection_sort(std::string output_filename) {
+  /* 
+   * Sorts an array with Selection Sort algorithm
+   * 
+   * :param output_filename: file name with sorted numbers
+  */
+
+  // Check if numbers were loaded from file
+  if (_unsorted.empty() == true) {
+    _die("Error: No numbers loaded.");
+  }
+
+  const int numbers_count = _unsorted.size();
+  _sorted.clear();
+  _sorted.insert(_sorted.end(), _unsorted.begin(), _unsorted.end());
+
+  int min;
+  int min_index;
+
+  {
+    Timer t("Selection Sort", numbers_count);
+
+    for (int i = 0; i < numbers_count; i++) {
+      min = _sorted[i];
+      min_index = i;
+      for(int j = i; j < numbers_count; j++) {
+        if (_sorted[j] < min) {
+          // we have new min
+          min = _sorted[j];
+          min_index = j;
+        }
+      }
+      _swap(&_sorted[i], &_sorted[min_index]);
+    }
+  }
+  
+  _save_numbers_to_file(output_filename);
+}
+
+void Sorter::_swap(int *left, int *right) {
+  /* 
+   * Swaps two number in an array
+   * 
+   * :param *left: pointer to first number location
+   * :param *right: pointer to second number location
+  */
+  int temp = *left;
+  *left = *right;
+  *right = temp;
 }
 
 void Sorter::_save_numbers_to_file(std::string output_filename) {

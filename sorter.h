@@ -8,6 +8,7 @@ class Sorter {
   void run_bubble_sort(std::string output_filename = "sorted_bubble_sort.txt");
   void run_insertion_sort(std::string output_filename = "sorted_insertion_sort.txt");
   void run_std_sort(std::string output_filename = "sorted_std_sort.txt");
+  void run_selection_sort(std::string output_filename = "sorted_selection_sort.txt");
 
   private:
   std::vector<int> _unsorted;

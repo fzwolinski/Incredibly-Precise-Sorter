@@ -8,6 +8,7 @@ int main() {
   s.run_bubble_sort();
   s.run_insertion_sort();
   s.run_std_sort();
+  s.run_selection_sort();
 
   return 0;
 }
