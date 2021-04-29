@@ -1,5 +1,6 @@
 #include <fstream>
 #include <iostream>
+#include <algorithm>
 
 #include "sorter.h"
 #include "timer.h"
@@ -106,6 +107,32 @@ void Sorter::run_insertion_sort(std::string output_filename) {
       }
       _sorted[j+1] = curr;
     }
+  }
+
+  _save_numbers_to_file(output_filename);
+}
+
+void Sorter::run_std_sort(std::string output_filename) {
+   /* 
+   * Sorts an array with sort() function from
+   * C++ Standard Library - from <algorithm> header
+   *
+   * :param output_filename: file name with sorted numbers
+  */
+
+  // Check if numbers were loaded from file
+  if (_unsorted.empty() == true) {
+    _die("Error: No numbers loaded.");
+  }
+
+  const int numbers_count = _unsorted.size();
+  _sorted.clear();
+  _sorted.insert(_sorted.end(), _unsorted.begin(), _unsorted.end());
+
+  {
+    Timer t("STD Sort", numbers_count);
+
+    std::sort(_sorted.begin(), _sorted.end());
   }
 
   _save_numbers_to_file(output_filename);

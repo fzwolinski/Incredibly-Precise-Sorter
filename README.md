@@ -12,6 +12,7 @@
 
 - Bubble Sort
 - Insertion Sort
+- IntroSort (using sort() from STD)
 
 <br />
 
@@ -38,8 +39,9 @@ foo@bar:~$ ./a.out
 ## 🚪 Example output
 
 ```sh
-   [Bubble Sort]  Took:    817091 µs (817.091000 ms) to sort 10000 numbers
-[Insertion Sort]  Took:    276006 µs (276.006000 ms) to sort 10000 numbers
+   [Bubble Sort]  Took:  83672661 µs   (83672.661000 ms) to sort 100000 numbers
+[Insertion Sort]  Took:  24628024 µs   (24628.024000 ms) to sort 100000 numbers
+      [STD Sort]  Took:     32000 µs      (32.000000 ms) to sort 100000 numbers
 ```
 
 <br />

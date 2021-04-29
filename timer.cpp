@@ -30,7 +30,7 @@ void Timer::_stop_timer() {
     std::cout.width(2);
     std::cout << " \xE6s";
 
-    std::cout.width(15);
+    std::cout.width(20);
     std::cout << in_miliseconds;
 
     std::cout.width(20);
