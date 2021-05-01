@@ -14,6 +14,7 @@
 - Insertion Sort
 - IntroSort (using sort() from STD)
 - Selection Sort
+- Merge Sort
 
 <br />
 
