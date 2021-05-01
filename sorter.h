@@ -9,10 +9,15 @@ class Sorter {
   void run_insertion_sort(std::string output_filename = "sorted_insertion_sort.txt");
   void run_std_sort(std::string output_filename = "sorted_std_sort.txt");
   void run_selection_sort(std::string output_filename = "sorted_selection_sort.txt");
+  void run_merge_sort(std::string output_filename = "sorted_merge_sort.txt");
 
   private:
   std::vector<int> _unsorted;
   std::vector<int> _sorted;
+
+  // For Merge Sort
+  std::vector<int> _merge(std::vector<int> L, std::vector<int> R);
+  std::vector<int> _mergeSort(std::vector<int> to_sort);
 
   void _save_numbers_to_file(std::string output_filename);
   void _swap(int *left, int *right);

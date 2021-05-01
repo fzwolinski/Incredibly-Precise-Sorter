@@ -40,10 +40,11 @@ foo@bar:~$ ./a.out
 ## 🚪 Example output
 
 ```sh
-   [Bubble Sort]  Took:  84553696 µs   (84553.696 ms) (84s) to sort 100000 numbers
-[Insertion Sort]  Took:  23972002 µs   (23972.002 ms) (23s) to sort 100000 numbers
-      [STD Sort]  Took:     34998 µs      (34.998 ms)  (0s) to sort 100000 numbers
-[Selection Sort]  Took:  21615517 µs   (21615.517 ms) (21s) to sort 100000 numbers
+   [Bubble Sort]  Took:  77063238 µs   (77063.238 ms) (77s) to sort 100000 numbers
+[Insertion Sort]  Took:  22203005 µs   (22203.005 ms) (22s) to sort 100000 numbers
+      [STD Sort]  Took:     30999 µs      (30.999 ms)  (0s) to sort 100000 numbers
+[Selection Sort]  Took:  18047006 µs   (18047.006 ms) (18s) to sort 100000 numbers
+    [Merge Sort]  Took:    352000 µs     (352.000 ms)  (0s) to sort 100000 numbers
 ```
 
 <br />
@@ -70,6 +71,7 @@ int main() {
   s.run_insertion_sort();
   s.run_std_sort();
   s.run_selection_sort();
+  s.run_merge_sort();
 
   return 0;
 }

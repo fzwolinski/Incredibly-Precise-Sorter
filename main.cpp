@@ -9,6 +9,7 @@ int main() {
   s.run_insertion_sort();
   s.run_std_sort();
   s.run_selection_sort();
+  s.run_merge_sort();
 
   return 0;
 }
