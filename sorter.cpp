@@ -266,6 +266,80 @@ std::vector<int> Sorter::_mergeSort(std::vector<int> to_sort) {
   return _merge(left, right);
 }
 
+
+
+///////////////////
+void Sorter::run_quicksort(std::string output_filename) {
+  /* 
+   * Runs Quicksort algorithm
+   * 
+   * :param output_filename: file name with sorted numbers
+  */
+
+  // Check if numbers were loaded from file
+  if (_unsorted.empty() == true) {
+    _die("Error: No numbers loaded.");
+  }
+
+  const int numbers_count = _unsorted.size();
+  _sorted.clear();
+  _sorted.insert(_sorted.end(), _unsorted.begin(), _unsorted.end());
+
+  {
+    Timer t("Quicksort", numbers_count);
+    
+    _quicksort(_sorted, 0, _sorted.size() - 1);
+  }
+  
+  _save_numbers_to_file(output_filename);
+}
+
+int Sorter::_partition(std::vector<int> &arr, int from, int to) {
+  /* 
+   * Helper function for quicksort algorithm
+   * Sets pivot to last element of array
+   * Places pivot at its correct position so that
+   * all smaller values are on the left side
+   * and greater values are on the right side 
+   * (of the pivot)
+   *
+   * :param arr: array to be sorted
+   * :param from: lowest index of array
+   * :param to: highest index of array
+  */
+  int pivot = arr[to]; // Set the last element as pivot
+  int i = from - 1;
+
+  for (int j = from; j <= to - 1; j++) {
+    if (arr[j] < pivot) {
+      i++;
+      _swap(&arr[i], &arr[j]);
+    }
+  }
+
+  // The final postition of pivot as (i + 1)
+  _swap(&arr[i + 1], &arr[to]);
+  
+  // Return position of pivot
+  return (i + 1);
+}
+
+void Sorter::_quicksort(std::vector<int> &arr, int from, int to) {
+  /* 
+   * Sorts an array with Quicksort algorithm 
+   * 
+   * :param arr: array to be sorted
+   * :param from: lowest index of array
+   * :param to: highest index of array
+  */
+  if (from < to) {
+    int p_i = _partition(arr, from , to); // Partitioning index
+    
+    _quicksort(arr, from, p_i - 1); // Left side
+    _quicksort(arr, p_i + 1, to); // Right side
+  }
+}
+
 void Sorter::_swap(int *left, int *right) {
   /* 
    * Swaps two number in an array

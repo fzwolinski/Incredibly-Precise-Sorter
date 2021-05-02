@@ -10,6 +10,7 @@ int main() {
   s.run_std_sort();
   s.run_selection_sort();
   s.run_merge_sort();
+  s.run_quicksort();
 
   return 0;
 }

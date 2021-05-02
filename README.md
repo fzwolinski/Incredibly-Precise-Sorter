@@ -15,6 +15,7 @@
 - IntroSort (using sort() from STD)
 - Selection Sort
 - Merge Sort
+- Quicksort
 
 <br />
 
@@ -41,11 +42,12 @@ foo@bar:~$ ./a.out
 ## 🚪 Example output
 
 ```sh
-   [Bubble Sort]  Took:  77063238 µs   (77063.238 ms) (77s) to sort 100000 numbers
-[Insertion Sort]  Took:  22203005 µs   (22203.005 ms) (22s) to sort 100000 numbers
-      [STD Sort]  Took:     30999 µs      (30.999 ms)  (0s) to sort 100000 numbers
-[Selection Sort]  Took:  18047006 µs   (18047.006 ms) (18s) to sort 100000 numbers
-    [Merge Sort]  Took:    352000 µs     (352.000 ms)  (0s) to sort 100000 numbers
+   [Bubble Sort]  Took:  77817989 µs   (77817.989 ms) (77s) to sort 100000 numbers
+[Insertion Sort]  Took:  24974911 µs   (24974.911 ms) (24s) to sort 100000 numbers
+      [STD Sort]  Took:     33990 µs      (33.990 ms)  (0s) to sort 100000 numbers
+[Selection Sort]  Took:  20961005 µs   (20961.005 ms) (20s) to sort 100000 numbers
+    [Merge Sort]  Took:    364995 µs     (364.995 ms)  (0s) to sort 100000 numbers
+     [Quicksort]  Took:     25993 µs      (25.993 ms)  (0s) to sort 100000 numbers
 ```
 
 <br />
@@ -73,6 +75,7 @@ int main() {
   s.run_std_sort();
   s.run_selection_sort();
   s.run_merge_sort();
+  s.run_quicksort();
 
   return 0;
 }
