@@ -42,12 +42,9 @@ foo@bar:~$ ./a.out
 ## 🚪 Example output
 
 ```sh
-   [Bubble Sort]  Took:  77817989 µs   (77817.989 ms) (77s) to sort 100000 numbers
-[Insertion Sort]  Took:  24974911 µs   (24974.911 ms) (24s) to sort 100000 numbers
-      [STD Sort]  Took:     33990 µs      (33.990 ms)  (0s) to sort 100000 numbers
-[Selection Sort]  Took:  20961005 µs   (20961.005 ms) (20s) to sort 100000 numbers
-    [Merge Sort]  Took:    364995 µs     (364.995 ms)  (0s) to sort 100000 numbers
-     [Quicksort]  Took:     25993 µs      (25.993 ms)  (0s) to sort 100000 numbers
+   [Bubble sort]  Took:  87813196 µs   (87813 ms) (87s) to sort 100000 numbers
+   [Bubble sort]  Took:  92229621 µs   (92230 ms) (92s) to sort 100000 numbers
+   [Bubble sort]   Avg:  90021408 µs   (90021 ms) (90s) to sort 100000 numbers
 ```
 
 <br />
@@ -60,22 +57,19 @@ First create sequence of _n_ random numbers
 foo@bar:~$ python create_file_with_nums.py
 ```
 
-Then edit main.cpp
+Then edit main() in main.cpp
 
 ```cpp
-#include <iostream>
-#include "sorter.h"
-
 int main() {
-  Sorter s;
-  s.load_numbers("nums.txt");
+  auto data = IO::load_data("nums.txt");
 
-  s.run_bubble_sort();
-  s.run_insertion_sort();
-  s.run_std_sort();
-  s.run_selection_sort();
-  s.run_merge_sort();
-  s.run_quicksort();
+  auto const tests = std::vector<std::tuple<std::string, std::vector<int> (*)(std::vector<int> const&), std::vector<int> const&, std::size_t const>> {
+    {"Bubble sort", &SortingAlg::bubble_sort, data, 2u}
+  };
+
+  for (auto&& [name, func, data, run_qty] : tests) {
+    test_sort_function(name, func, data, run_qty);
+  }
 
   return 0;
 }

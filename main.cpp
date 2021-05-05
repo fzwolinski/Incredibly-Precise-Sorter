@@ -45,7 +45,7 @@ int main() {
     {"Bubble sort", &SortingAlg::bubble_sort, data, 2u}
   };
 
-  for (auto [name, func, data, run_qty] : tests) {
+  for (auto&& [name, func, data, run_qty] : tests) {
     test_sort_function(name, func, data, run_qty);
   }
 
