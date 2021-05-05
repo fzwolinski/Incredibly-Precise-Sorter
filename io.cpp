@@ -71,15 +71,20 @@ void IO::output_data(std::vector<int> const& data, std::ostream& out) {
   }
 }
 
-void IO::output_result(std::string const& alg_name, double const& duration, std::size_t num_qty) {
+void IO::output_result(std::string const& alg_name, double const& duration, std::size_t num_qty, bool avg) {
   double miliseconds = duration * 0.001;
   int seconds = miliseconds * 0.001;
-  
+  std::string out_type = " Took:";
+
+  if (avg) {
+    out_type = " Avg:";
+  }
+
   std::cout.width(16);
   std::cout << "[" + alg_name + "]";
 
   std::cout.width(7);
-  std::cout << " Took:";
+  std::cout << out_type;
 
   auto duration_os = std::ostringstream{};
   duration_os.precision(0);

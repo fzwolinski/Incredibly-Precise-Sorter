@@ -12,6 +12,7 @@ void test_sort_function(std::string alg_name,
                        ) {
   double single_test_duration;
   std::vector<int> sorted;
+  double avg_time_mcs = 0; // In microseconds
 
   for(size_t i = 0; i < run_qty; i++) {
     {
@@ -20,9 +21,18 @@ void test_sort_function(std::string alg_name,
       sorted = sort_func(data);
     }
     IO::output_result(alg_name, single_test_duration, data.size());
+    avg_time_mcs += single_test_duration;
     single_test_duration = 0;
   }
   
+  // Display average sort time for the algorithm
+  if (run_qty > 1) {
+    avg_time_mcs = avg_time_mcs / (run_qty);
+
+    IO::output_result(alg_name, avg_time_mcs, data.size(), true);
+  }
+
+  // Save sorted data to file
   std::replace(alg_name.begin(), alg_name.end(), ' ', '_');
   std::string output_filename = "sorted_" + alg_name + ".txt";
   IO::save_data_to_file(output_filename, sorted);
