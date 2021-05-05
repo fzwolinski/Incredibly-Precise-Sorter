@@ -22,7 +22,7 @@
 ## 💻 Compile and Run
 
 ```sh
-foo@bar:~$ g++ main.cpp sorter.cpp timer.cpp
+foo@bar:~$ g++ -std=c++20 main.cpp io.cpp sorting_alg.cpp timer.cpp
 ```
 
 Windows
@@ -63,7 +63,11 @@ Then edit main() in main.cpp
 int main() {
   auto data = IO::load_data("nums.txt");
 
-  auto const tests = std::vector<std::tuple<std::string, std::vector<int> (*)(std::vector<int> const&), std::vector<int> const&, std::size_t const>> {
+  auto const tests = std::vector<std::tuple<
+                                            std::string,
+                                            std::vector<int> (*)(std::vector<int> const&),
+                                            std::vector<int> const&,
+                                            std::size_t const>> {
     {"Bubble sort", &SortingAlg::bubble_sort, data, 2u}
   };
 
