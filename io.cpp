@@ -3,6 +3,9 @@
 #include <iterator>
 #include <filesystem>
 #include <vector>
+#include <string>
+#include <iostream>
+#include <sstream>
 
 #include "io.hpp"
 
@@ -66,4 +69,38 @@ void IO::output_data(std::vector<int> const& data, std::ostream& out) {
 
     out << number;
   }
+}
+
+void IO::output_result(std::string const& alg_name, double const& duration, std::size_t num_qty) {
+  double miliseconds = duration * 0.001;
+  int seconds = miliseconds * 0.001;
+  
+  std::cout.width(16);
+  std::cout << "[" + alg_name + "]";
+
+  std::cout.width(7);
+  std::cout << " Took:";
+
+  auto duration_os = std::ostringstream{};
+  duration_os.precision(0);
+  duration_os << std::fixed << duration;
+
+  std::cout.width(10);
+  std::cout << duration_os.str();
+
+  std::cout.width(2);
+  std::cout << " \xE6s"; // microseconds symbol
+
+  auto ms_os = std::ostringstream{};
+  ms_os.precision(0);
+  ms_os << " (" << std::fixed << miliseconds << " ms)";
+
+  std::cout.width(13);
+  std::cout << ms_os.str();
+
+  std::cout.width(6);
+  std::cout << " (" + std::to_string(seconds) + "s)";
+
+  std::cout.width(20);
+  std::cout << " to sort " + std::to_string(num_qty) + " numbers\n";
 }

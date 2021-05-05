@@ -1,5 +1,6 @@
 #include <iostream>
 #include <string>
+
 #include "timer.hpp"
 
 Timer::Timer(double& duration) : _duration(duration) {
