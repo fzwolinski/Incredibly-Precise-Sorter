@@ -32,3 +32,11 @@
 *.exe
 *.out
 *.app
+
+# Cmake (For gtest)
+CMakeFiles/
+Makefile
+*.cmake
+executeTests
+
+!CMakeLists.txt

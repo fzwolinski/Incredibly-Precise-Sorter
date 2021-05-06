@@ -39,6 +39,22 @@ foo@bar:~$ ./a.out
 
 <br />
 
+## ✔️ Run Tests
+
+```sh
+foo@bar:~$ cmake CMakeLists.txt
+```
+
+```sh
+foo@bar:~$ make
+```
+
+```sh
+foo@bar:~$ ./executeTests
+```
+
+<br />
+
 ## 🚪 Example output
 
 An example of one test series for each of the algorithms
