@@ -109,7 +109,7 @@ Example of four test series for each of the algorithms
 First create sequence of _n_ random numbers
 
 ```sh
-foo@bar:~$ python create_file_with_nums.py
+foo@bar:~$ python create_file_with_nums.py n
 ```
 
 Then edit main() in main.cpp
