@@ -173,6 +173,6 @@ void IO::save_result_to_file(std::filesystem::path const& path, std::string cons
   out.width(20);
   out << " to sort " + std::to_string(num_qty) + " numbers\n";
   if (avg) {
-    std::cout << "\n";
+    out << "\n";
   }
 }

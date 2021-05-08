@@ -14,7 +14,7 @@ void test_sort_function(std::string alg_name,
   double single_test_duration;
   std::vector<int> sorted;
   double avg_time_mcs = 0; // In microseconds
-  const std::string res_out_filename = "res_" + alg_name + ".txt";
+  const std::string RESULT_FILENAME = "times_summary.txt";
 
   for(size_t i = 0; i < run_qty; i++) {
     {
@@ -26,7 +26,7 @@ void test_sort_function(std::string alg_name,
     
     // Save time results to file
     if (save_res_to_file) {
-      IO::save_result_to_file(res_out_filename, alg_name, single_test_duration, data.size());
+      IO::save_result_to_file(RESULT_FILENAME, alg_name, single_test_duration, data.size());
     }
     
     avg_time_mcs += single_test_duration;
@@ -47,7 +47,7 @@ void test_sort_function(std::string alg_name,
   
   // Save time results (average time) to file
   if (save_res_to_file) {
-    IO::save_result_to_file(res_out_filename, alg_name, single_test_duration, data.size(), true);
+    IO::save_result_to_file(RESULT_FILENAME, alg_name, single_test_duration, data.size(), true);
   }
 }
 
@@ -60,12 +60,12 @@ int main() {
                                             std::vector<int> const&, 
                                             std::size_t const,
                                             bool>> {
-    {"Bubble sort", &SortingAlg::bubble_sort, data, 3u, false},
-    {"Insertion sort", &SortingAlg::insertion_sort, data, 3u, false},
-    {"STD sort", &SortingAlg::std_sort, data, 3u, false},
-    {"Selection sort", &SortingAlg::selection_sort, data, 3u, false},
-    {"Merge sort", &SortingAlg::merge_sort, data, 3u, false},
-    {"Quicksort", &SortingAlg::quicksort, data, 3u, false}
+    {"Bubble sort", &SortingAlg::bubble_sort, data, 3u, true},
+    {"Insertion sort", &SortingAlg::insertion_sort, data, 3u, true},
+    {"STD sort", &SortingAlg::std_sort, data, 3u, true},
+    {"Selection sort", &SortingAlg::selection_sort, data, 3u, true},
+    {"Merge sort", &SortingAlg::merge_sort, data, 3u, true},
+    {"Quicksort", &SortingAlg::quicksort, data, 3u, true}
   };
 
   for (auto&& [name, func, data, run_qty, save_res_to_file] : tests) {
