@@ -8,6 +8,7 @@
 #include "quicksort_test.cpp"
 
 #include "io_load_data_test.cpp"
+#include "io_save_data_to_file_test.cpp"
 
 int main(int argc, char **argv) {
   ::testing::InitGoogleTest(&argc, argv);
