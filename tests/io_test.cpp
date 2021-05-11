@@ -38,9 +38,18 @@ TEST_F(InputOutputTest, LoadDataShouldProperlyLoadNumbersFromFile) {
   EXPECT_EQ(test_numbers, data);  
 }
 
-TEST_F(InputOutputTest, ShouldThrowExceptionWhileLoadingEmptyFile) {
+TEST_F(InputOutputTest, ShouldThrowExceptionWhileLoadingFromEmptyFile) {
   try {
     auto data = IO::load_data("empty_test_file.txt");
+  }
+  catch(std::invalid_argument const& e) {
+    EXPECT_STREQ("Error reading file", e.what());
+  }
+}
+
+TEST_F(InputOutputTest, ShouldThrowExceptionWhileLoadingDataFromNotExistingFile) {
+  try {
+    auto data = IO::load_data("this_file_does_not_exist.txt");
   }
   catch(std::invalid_argument const& e) {
     EXPECT_STREQ("Error reading file", e.what());
