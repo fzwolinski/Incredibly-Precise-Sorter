@@ -7,7 +7,7 @@
 #include "merge_sort_test.cpp"
 #include "quicksort_test.cpp"
 
-#include "io_test.cpp"
+#include "io_load_data_test.cpp"
 
 int main(int argc, char **argv) {
   ::testing::InitGoogleTest(&argc, argv);

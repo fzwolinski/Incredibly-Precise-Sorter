@@ -5,7 +5,7 @@
 #include <vector>
 #include <cstdio>
 
-class InputOutputTest : public ::testing::Test {
+class IOLoadDataTest : public ::testing::Test {
 protected:
   virtual void SetUp() { 
     test_numbers = {5, 0, 2, 5, 6, -99, 3};
@@ -32,13 +32,13 @@ protected:
   std::vector<int> test_numbers;
 };
 
-TEST_F(InputOutputTest, LoadDataShouldProperlyLoadNumbersFromFile) {
+TEST_F(IOLoadDataTest, LoadDataShouldProperlyLoadNumbersFromFile) {
   auto data = IO::load_data("test_file_with_numbers.txt");
 
   EXPECT_EQ(test_numbers, data);  
 }
 
-TEST_F(InputOutputTest, ShouldThrowExceptionWhileLoadingFromEmptyFile) {
+TEST_F(IOLoadDataTest, ShouldThrowExceptionWhileLoadingFromEmptyFile) {
   try {
     auto data = IO::load_data("empty_test_file.txt");
   }
@@ -47,7 +47,7 @@ TEST_F(InputOutputTest, ShouldThrowExceptionWhileLoadingFromEmptyFile) {
   }
 }
 
-TEST_F(InputOutputTest, ShouldThrowExceptionWhileLoadingDataFromNotExistingFile) {
+TEST_F(IOLoadDataTest, ShouldThrowExceptionWhileLoadingDataFromNotExistingFile) {
   try {
     auto data = IO::load_data("this_file_does_not_exist.txt");
   }
