@@ -1,6 +1,5 @@
 #include "../sorting_alg.hpp"
 #include <gtest/gtest.h>
-#include <vector>
 
 TEST(SortAlgorithmTest, MergeSortSortsCorrectly) {
   EXPECT_EQ(sorted_0, SortingAlg::merge_sort(unsorted_0));

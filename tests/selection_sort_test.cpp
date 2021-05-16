@@ -1,6 +1,5 @@
 #include "../sorting_alg.hpp"
 #include <gtest/gtest.h>
-#include <vector>
 
 TEST(SortAlgorithmTest, SelectionSortSortsCorrectly) {
   EXPECT_EQ(sorted_0, SortingAlg::selection_sort(unsorted_0));

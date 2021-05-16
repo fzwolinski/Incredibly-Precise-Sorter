@@ -2,8 +2,6 @@
 
 #include <gtest/gtest.h>
 #include <fstream>
-#include <vector>
-#include <cstdio>
 
 class IOLoadDataTest : public ::testing::Test {
 protected:

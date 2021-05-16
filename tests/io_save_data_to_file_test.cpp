@@ -1,12 +1,6 @@
 #include "../io.hpp"
 
 #include <gtest/gtest.h>
-#include <fstream>
-#include <iostream>
-#include <vector>
-#include <string>
-#include <cstdio>
-#include <algorithm>
 
 class IOSaveDataToFileTest : public ::testing::Test {
 protected:
