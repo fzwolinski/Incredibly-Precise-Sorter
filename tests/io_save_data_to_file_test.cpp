@@ -6,46 +6,54 @@
 #include <vector>
 #include <string>
 #include <cstdio>
+#include <algorithm>
 
 class IOSaveDataToFileTest : public ::testing::Test {
 protected:
   virtual void SetUp() {
     // Save test data  
-    IO::save_data_to_file(filename, test_data);
+    IO::save_data_to_file(filename_0, test_data_0);
+    IO::save_data_to_file(filename_1, test_data_1);
   }
 
   virtual void TearDown() {
     // Remove test file
-    std::remove(filename.c_str());
+    std::remove(filename_0.c_str());
+    std::remove(filename_1.c_str());
   }
 
-  std::vector<int> test_data{1, 0, -5, 22, -1, 99};
-  const std::string filename = "test_saved_data.txt";
+  // Normal data
+  const std::vector<int> test_data_0{1, 0, -5, 22, -1, 99};
+  const std::string correct_0 = "1,0,-5,22,-1,99";
+  const std::string filename_0 = "test_saved_data.txt";
+
+  // Empty data
+  const std::vector<int> test_data_1{};
+  const std::string correct_1 = "";
+  const std::string filename_1 = "test_saved_empty_data.txt";
 };
 
 
 TEST_F(IOSaveDataToFileTest, SavesCorrectDataToFile) {
-  // Read file and save data as string
-  std::string line, cur_line, nums;
-  std::ifstream test_file(filename);
+  std::ifstream test_file(filename_0);
   
-  while(getline(test_file, line)) {
-    std::stringstream ss(line);
-    getline(ss, cur_line);
-    nums += cur_line;
-  }
-  test_file.close();
+  std::string f_content((std::istreambuf_iterator<char>(test_file)),
+                         std::istreambuf_iterator<char>());
 
-  // Parse string -> vector of ints
-  std::vector<int> read_data;
-  std::stringstream ss(nums);
+  f_content.erase(std::remove_if(f_content.begin(), f_content.end(), isspace), f_content.end());
+  f_content.erase(std::remove(f_content.begin(), f_content.end(), '\n'), f_content.end());
 
-  for (int i; ss >> i;) {
-    read_data.push_back(i);    
-    if (ss.peek() == ',') {
-      ss.ignore();
-    }
-  }
+  EXPECT_EQ(correct_0, f_content);
+}
 
-  EXPECT_EQ(test_data, read_data);
+TEST_F(IOSaveDataToFileTest, SavesEmptyDataToFile) {
+  std::ifstream test_file(filename_1);
+  
+  std::string f_content((std::istreambuf_iterator<char>(test_file)),
+                         std::istreambuf_iterator<char>());
+
+  f_content.erase(std::remove_if(f_content.begin(), f_content.end(), isspace), f_content.end());
+  f_content.erase(std::remove(f_content.begin(), f_content.end(), '\n'), f_content.end());
+
+  EXPECT_EQ(correct_1, f_content);
 }
