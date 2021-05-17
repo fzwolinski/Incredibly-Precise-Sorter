@@ -42,15 +42,15 @@ foo@bar:~$ ./a.out
 ## ✔️ Run Tests
 
 ```sh
-foo@bar:~$ cmake CMakeLists.txt
+foo@bar:~$ cmake -S . -B build
 ```
 
 ```sh
-foo@bar:~$ make
+foo@bar:~$ cmake --build build
 ```
 
 ```sh
-foo@bar:~$ ./executeTests
+foo@bar:~$ cd build && ctest
 ```
 
 <br />
